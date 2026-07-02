@@ -1,20 +1,20 @@
 #!/bin/bash
-echo "Dang cai dat NVM tu dong..."
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-echo "Dang xoa cac file node loi (Ban se can nhap mat khau may Mac, go roi Enter, khong hien dau *)..."
+echo "Dang don dep cac file bi loi..."
 sudo rm -rf /usr/local/bin/node
 sudo rm -rf /usr/local/bin/npm
 
-echo "Dang cai dat Node 18..."
-nvm install 18
-nvm use 18
-nvm alias default 18
+echo "Dang tai truc tiep bo cai Node 18 chuan cua Apple..."
+curl -o node18.pkg https://nodejs.org/dist/v18.20.4/node-v18.20.4.pkg
+
+echo "Dang tien hanh cai dat (Vui long nhap mat khau may Mac, go roi Enter, khong hien dau *)..."
+sudo installer -pkg node18.pkg -target /
+
+echo "Xoa file cai dat tam..."
+rm node18.pkg
 
 echo "Kiem tra phien ban:"
-node -v
+/usr/local/bin/node -v
+/usr/local/bin/npm -v
 
-echo "CAI DAT XONG! Ban hay TAT HANG cua so Terminal nay, mo Terminal MOI roi tiep tuc nhe!"
+echo "=== CAI DAT HOAN TAT ==="
+echo "Hay dong Terminal nay, mo Terminal moi, cd vao thu muc code roi chay: npm install"
